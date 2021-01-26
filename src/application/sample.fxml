@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="620.0" prefWidth="1150.0" styleClass="background-primary" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
+   <GridPane prefHeight="568.0" prefWidth="1149.0" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <columnConstraints>
+         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      </columnConstraints>
+      <rowConstraints>
+         <RowConstraints maxHeight="-Infinity" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+         <RowConstraints minHeight="300.0" prefHeight="300.0" vgrow="SOMETIMES" />
+         <RowConstraints maxHeight="-Infinity" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+      <children>
+         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="nav-bar" GridPane.hgrow="ALWAYS" GridPane.vgrow="NEVER">
+            <children>
+               <Label styleClass="nav-bar-title" text="Formulaire d'incident">
+                  <HBox.margin>
+                     <Insets left="20.0" />
+                  </HBox.margin>
+               </Label>
+               <Pane HBox.hgrow="ALWAYS" />
+               <Button fx:id="newTypologyBtn" mnemonicParsing="false" prefWidth="104.0" text="NEW TYPOLOGY" visible="false">
+                  <styleClass>
+                     <String fx:value="btn-alco" />
+                     <String fx:value="btn-large" />
+                  </styleClass>
+                  <HBox.margin>
+                     <Insets right="5.0" />
+                  </HBox.margin>
+               </Button>
+            </children>
+            <GridPane.margin>
+               <Insets bottom="5.0" />
+            </GridPane.margin>
+         </HBox>
+         <GridPane hgap="25.0" prefHeight="403.0" prefWidth="1112.0" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
+            <columnConstraints>
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="274.0" minWidth="10.0" prefWidth="249.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="482.0" minWidth="10.0" prefWidth="304.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="520.0" />
+            </columnConstraints>
+            <rowConstraints>
+               <RowConstraints maxHeight="1.7976931348623157E308" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+            </rowConstraints>
+            <children>
+               <VBox minHeight="-Infinity" prefHeight="480.0" prefWidth="100.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+                  <children>
+                     <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                        <children>
+                           <Label minWidth="105.0" text="Date" />
+                           <Pane HBox.hgrow="ALWAYS" />
+                           <TextField fx:id="date" disable="true" editable="false" maxWidth="200.0" minWidth="80.0" styleClass="field" HBox.hgrow="NEVER" />
+                        </children>
+                     </HBox>
+                     <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                        <children>
+                           <Label minWidth="105.0" text="Défaillance" />
+                           <Pane HBox.hgrow="ALWAYS" />
+                           <ChoiceBox fx:id="typology" maxWidth="200.0" minWidth="80.0" styleClass="field" value="Document" HBox.hgrow="NEVER" />
+                        </children>
+                     </HBox>
+                     <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                        <children>
+                           <Label minWidth="105.0" text="Détails" />
+                           <Pane HBox.hgrow="ALWAYS" />
+                           <ChoiceBox fx:id="subType" maxWidth="200.0" minWidth="80.0" styleClass="field" HBox.hgrow="NEVER" />
+                        </children>
+                     </HBox>
+                     <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="NEVER">
+                        <children>
+                           <Label minWidth="105.0" text="Problème" />
+                           <Pane HBox.hgrow="ALWAYS" />
+                           <ChoiceBox fx:id="subSubType" maxWidth="200.0" minWidth="80.0" styleClass="field" HBox.hgrow="NEVER" />
+                        </children>
+                     </HBox>
+                     <Separator prefWidth="200.0">
+                        <VBox.margin>
+                           <Insets top="10.0" />
+                        </VBox.margin>
+                     </Separator>
+                     <Label text="Criticité">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Label>
+                     <HBox prefHeight="100.0" styleClass="bordered-box" VBox.vgrow="NEVER">
+                        <children>
+                           <VBox maxWidth="1.7976931348623157E308" spacing="5.0" HBox.hgrow="ALWAYS">
+                              <children>
+                                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                    <children>
+                                       <Label minWidth="105.0" text="Fréquence" />
+                                       <Pane HBox.hgrow="ALWAYS" />
+                                       <ComboBox fx:id="frequency" maxWidth="200.0" prefWidth="200.0" styleClass="field" />
+                                    </children>
+                                 </HBox>
+                                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                    <children>
+                                       <Label minWidth="105.0" text="Gravité" />
+                                       <Pane HBox.hgrow="ALWAYS" />
+                                       <ComboBox fx:id="severity" maxWidth="200.0" prefWidth="200.0" styleClass="field" />
+                                    </children>
+                                 </HBox>
+                                 <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                    <children>
+                                       <Label minWidth="105.0" text="Détection" />
+                                       <Pane HBox.hgrow="ALWAYS" />
+                                       <ComboBox fx:id="nonDetectability" maxWidth="200.0" prefWidth="200.0" styleClass="field" />
+                                    </children>
+                                 </HBox>
+                              </children>
+                              <HBox.margin>
+                                 <Insets />
+                              </HBox.margin>
+                           </VBox>
+                        </children>
+                        <VBox.margin>
+                           <Insets bottom="20.0" />
+                        </VBox.margin>
+                     </HBox>
+                  </children>
+                  <GridPane.margin>
+                     <Insets />
+                  </GridPane.margin>
+               </VBox>
+               <VBox minHeight="-Infinity" prefHeight="200.0" prefWidth="453.0" GridPane.columnIndex="1" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                  <children>
+                     <Label prefHeight="17.0" text="Description du problème">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Label>
+                     <TextArea fx:id="comment" editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="306.0" prefWidth="360.0" promptText="Description" wrapText="true" VBox.vgrow="ALWAYS" />
+                     <Label prefHeight="17.0" text="Fichiers (optionnel)">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Label>
+                     <ListView fx:id="documentsListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="95.0" prefWidth="360.0" />
+                     <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                        <children>
+                           <Button fx:id="deleteFileBtn" mnemonicParsing="false" text="Supprimer">
+                              <styleClass>
+                                 <String fx:value="btn-danger" />
+                                 <String fx:value="btn-large" />
+                              </styleClass>
+                           </Button>
+                           <Pane HBox.hgrow="ALWAYS" />
+
+
+                           <!--Right side-->
+                           <Button fx:id="fileChooser" mnemonicParsing="false" text="Ajouter">
+                              <styleClass>
+                                 <String fx:value="btn-alco" />
+                                 <String fx:value="btn-large" />
+                              </styleClass>
+                           </Button>
+                        </children>
+                     </HBox>
+                  </children>
+               </VBox>
+               <VBox minHeight="-Infinity" prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="2" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
+                  <children>
+                     <Label prefHeight="17.0" text="Action rapide">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Label>
+                     <TableView fx:id="actionTableQR" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
+                        <columns>
+                           <TableColumn fx:id="colVal" maxWidth="36.0" minWidth="0.0" prefWidth="0.0" resizable="false" text="Done" />
+                           <TableColumn fx:id="colDate" minWidth="-Infinity" prefWidth="68.0" text="Deadline" />
+                           <TableColumn fx:id="colWho" minWidth="-Infinity" prefWidth="114.0" text="Owner" />
+                           <TableColumn fx:id="colWhat" minWidth="-Infinity" prefWidth="337.0" text="Details" />
+                        </columns>
+                        <columnResizePolicy>
+                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                        </columnResizePolicy>
+                     </TableView>
+                     <Label text="Action long terme">
+                        <font>
+                           <Font size="16.0" />
+                        </font>
+                     </Label>
+                     <TableView fx:id="actionTableQC" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
+                        <columns>
+                           <TableColumn fx:id="colVal2" maxWidth="63.0" minWidth="0.0" prefWidth="0.0" resizable="false" text="Done" />
+                           <TableColumn fx:id="colDate2" minWidth="-Infinity" prefWidth="68.0" text="Deadline" />
+                           <TableColumn fx:id="colWho2" minWidth="-Infinity" prefWidth="114.0" text="Owner" />
+                           <TableColumn fx:id="colWhat2" minWidth="-Infinity" prefWidth="337.0" text="Details" />
+                        </columns>
+                        <columnResizePolicy>
+                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                        </columnResizePolicy>
+                     </TableView>
+                     <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                        <children>
+                           <Button fx:id="valActionBtn" mnemonicParsing="false" text="Action finie">
+                              <styleClass>
+                                 <String fx:value="btn-alco" />
+                                 <String fx:value="btn-large" />
+                              </styleClass>
+                           </Button>
+                           <Pane HBox.hgrow="ALWAYS" />
+                           <Button fx:id="addActionBtn" mnemonicParsing="false" text="Ajouter action">
+                              <styleClass>
+                                 <String fx:value="btn-alco" />
+                                 <String fx:value="btn-large" />
+                              </styleClass>
+                              <HBox.margin>
+                                 <Insets left="1.0" />
+                              </HBox.margin>
+                           </Button>
+                        </children>
+                     </HBox>
+                  </children>
+               </VBox>
+            </children>
+            <GridPane.margin>
+               <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </GridPane.margin>
+         </GridPane>
+         <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" styleClass="nav-bar" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.vgrow="NEVER">
+            <children>
+               <Button fx:id="deleteIncidentBtn" mnemonicParsing="false" text="DELETE INCIDENT" visible="false">
+                  <styleClass>
+                     <String fx:value="btn-danger" />
+                     <String fx:value="btn-large" />
+                  </styleClass>
+                  <HBox.margin>
+                     <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  </HBox.margin>
+               </Button>
+               <Pane HBox.hgrow="ALWAYS" />
+               <Label fx:id="errorLabel" prefHeight="17.0" prefWidth="216.0" />
+            </children>
+            <GridPane.margin>
+               <Insets top="5.0" />
+            </GridPane.margin>
+         </HBox>
+      </children>
+   </GridPane>
+
+</AnchorPane>

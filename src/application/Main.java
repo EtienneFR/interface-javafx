@@ -16,6 +16,7 @@ public class Main extends Application {
             Scene scene = new Scene(root);
             primaryStage.setMaximized(true);
             primaryStage.setScene(scene);
+            primaryStage.setTitle("Rapport d'incident");
             primaryStage.show();
         }
         catch(Exception e)

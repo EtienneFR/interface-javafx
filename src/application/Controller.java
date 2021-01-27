@@ -1,7 +1,10 @@
 package application;
 
+import java.io.File;
+
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -13,6 +16,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.stage.FileChooser;
+import javafx.stage.Window;
 
 public class Controller {
 
@@ -44,13 +49,16 @@ public class Controller {
     private TextArea comment;
 
     @FXML
-    private ListView<?> documentsListView;
+    private ListView<String> documentsListView;
 
     @FXML
     private Button deleteFileBtn;
 
     @FXML
     private Button fileChooser;
+    
+    @FXML
+    private Button btnViderListe;
 
     @FXML
     private TableView<?> actionTableQR;
@@ -96,11 +104,35 @@ public class Controller {
 
     @FXML
     private Label errorLabel;
+    
+    @FXML
+    void deleteFile(ActionEvent event) {
+    	ObservableList<String> selectedIndices = documentsListView.getSelectionModel().getSelectedItems();
+    	if(!(selectedIndices.isEmpty())) {
+    		for(Object o : selectedIndices){
+                documentsListView.getItems().remove(o);
+            }
+    	} 
+    }
+    
+    @FXML
+    void emptyListFiles(ActionEvent event) {
+    	documentsListView.getItems().clear();
+    }
+
+    @FXML
+    void selectFile(ActionEvent event) {
+    	FileChooser filePicker = new FileChooser();
+    	filePicker.setTitle("Open Resource File");
+    	File f = filePicker.showOpenDialog(Window.getWindows().get(0));
+    	if (f != null) {
+    		documentsListView.getItems().add(f.getName());
+        }
+    }
 
     @FXML
     void Quit(ActionEvent event) {
     	Platform.exit();
-
     }
     
     private String[] typologyValues = { "Type 1", "Type 2", "Type 3" };

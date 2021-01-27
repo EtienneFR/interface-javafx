@@ -171,22 +171,25 @@
                      <ListView fx:id="documentsListView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="95.0" prefWidth="360.0" />
                      <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
                         <children>
-                           <Button fx:id="deleteFileBtn" mnemonicParsing="false" text="Supprimer">
-                              <styleClass>
-                                 <String fx:value="btn-danger" />
-                                 <String fx:value="btn-large" />
-                              </styleClass>
-                           </Button>
-                           <Pane HBox.hgrow="ALWAYS" />
-
-
-                           <!--Right side-->
-                           <Button fx:id="fileChooser" mnemonicParsing="false" text="Ajouter">
-                              <styleClass>
-                                 <String fx:value="btn-alco" />
-                                 <String fx:value="btn-large" />
-                              </styleClass>
-                           </Button>
+                           <Pane HBox.hgrow="ALWAYS">
+                              <children>
+                                 <Button fx:id="deleteFileBtn" layoutY="44.0" mnemonicParsing="false" onAction="#deleteFile" text="Supprimer">
+                                    <styleClass>
+                                       <String fx:value="btn-danger" />
+                                       <String fx:value="btn-large" />
+                                    </styleClass>
+                                 </Button>
+      
+      
+                                 <!--Right side-->
+                                 <Button fx:id="fileChooser" layoutY="14.0" mnemonicParsing="false" onAction="#selectFile" text="Ajouter">
+                                    <styleClass>
+                                       <String fx:value="btn-alco" />
+                                       <String fx:value="btn-large" />
+                                    </styleClass>
+                                 </Button>
+                                 <Button fx:id="btnViderListe" layoutX="230.0" layoutY="14.0" mnemonicParsing="false" onAction="#emptyListFiles" text="Vider" />
+                              </children></Pane>
                         </children>
                      </HBox>
                   </children>

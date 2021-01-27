@@ -131,7 +131,7 @@ public class Controller {
     }
 
     @FXML
-    void Quit(ActionEvent event) {
+    void quit(ActionEvent event) {
     	Platform.exit();
     }
     

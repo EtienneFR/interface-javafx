@@ -267,7 +267,7 @@
                   </HBox.margin>
                </Button>
                <Pane HBox.hgrow="ALWAYS" />
-               <Button fx:id="btnExit" mnemonicParsing="false" onAction="#Quit" text="Quitter" />
+               <Button fx:id="btnExit" mnemonicParsing="false" onAction="#quit" text="Quitter" />
                <Label fx:id="errorLabel" prefHeight="17.0" prefWidth="216.0" />
             </children>
             <GridPane.margin>

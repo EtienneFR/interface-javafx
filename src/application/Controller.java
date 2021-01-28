@@ -1,6 +1,8 @@
 package application;
 
 import java.io.File;
+import java.time.format.DateTimeFormatter;
+
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -102,6 +104,30 @@ public class Controller {
     @FXML
     private Label errorLabel;
     
+    private String[] typologyValues = { "Type 1", "Type 2", "Type 3" };
+    private String[] subTypeValues = { "A1", "A2", "A3" }; 
+    private String[] subSubTypeValues = { "Général", "Partiel" }; 
+    
+    private String[] frequencyValues = { "X1", "X2", "X3", "X10", "X20" }; 
+    private String[] severityValues = { "Peu importante", "Moyenne", "Importante", "Très importante"};
+    private String[] nonDetectabilityValues = { "Avant réception", "Après réception" };
+    
+    @FXML
+    public void initialize() {
+    	typology.setItems(FXCollections.observableArrayList(typologyValues));
+    	subType.setItems(FXCollections.observableArrayList(subTypeValues));
+    	subSubType.setItems(FXCollections.observableArrayList(subSubTypeValues));
+    	
+        frequency.setItems(FXCollections.observableArrayList(frequencyValues));
+        severity.setItems(FXCollections.observableArrayList(severityValues));
+        nonDetectability.setItems(FXCollections.observableArrayList(nonDetectabilityValues));
+        
+        colDate.setCellValueFactory(new PropertyValueFactory<>("colDate"));
+    	colWho.setCellValueFactory(new PropertyValueFactory<>("colWho"));
+    	colWhat.setCellValueFactory(new PropertyValueFactory<>("colWhat"));
+
+    }
+    
     @FXML
     void deleteFile(ActionEvent event) {
     	ObservableList<String> selectedIndices = documentsListView.getSelectionModel().getSelectedItems();
@@ -132,38 +158,16 @@ public class Controller {
     	Platform.exit();
     }
     
-    private String[] typologyValues = { "Type 1", "Type 2", "Type 3" };
-    private String[] subTypeValues = { "A1", "A2", "A3" }; 
-    private String[] subSubTypeValues = { "Général", "Partiel" }; 
-    
-    private String[] frequencyValues = { "X1", "X2", "X3", "X10", "X20" }; 
-    private String[] severityValues = { "Peu importante", "Moyenne", "Importante", "Très importante"};
-    private String[] nonDetectabilityValues = { "Avant réception", "Après réception" };
-    
     @FXML
     void addAction(ActionEvent event) {
-    	actionTableQR.setItems(observableList);
-    }
-    
-    @FXML
-    public void initialize() {
-    	typology.setItems(FXCollections.observableArrayList(typologyValues));
-    	subType.setItems(FXCollections.observableArrayList(subTypeValues));
-    	subSubType.setItems(FXCollections.observableArrayList(subSubTypeValues));
+    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
     	
-        frequency.setItems(FXCollections.observableArrayList(frequencyValues));
-        severity.setItems(FXCollections.observableArrayList(severityValues));
-        nonDetectability.setItems(FXCollections.observableArrayList(nonDetectabilityValues));
-        
-        colDate.setCellValueFactory(new PropertyValueFactory<>("colDate"));
-    	colWho.setCellValueFactory(new PropertyValueFactory<>("colWho"));
-    	colWhat.setCellValueFactory(new PropertyValueFactory<>("colWhat"));
-
+    	if(date.getValue() != null && !comment.getText().isEmpty()) {
+    		actionTableQR.getItems().add(
+    				new ActionQR(date.getValue().format(formatter), "Moi", comment.getText())
+    		);
+    	}
     }
-    
-    private final ObservableList<ActionQR> observableList = FXCollections.observableArrayList(
-    		new ActionQR("test", "test", "test")
-    );
     
 }
 

@@ -1,7 +1,6 @@
 package application;
 
 import java.io.File;
-
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,6 +15,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
 import javafx.stage.Window;
 
@@ -61,22 +61,19 @@ public class Controller {
     private Button btnViderListe;
 
     @FXML
-    private TableView<?> actionTableQR;
+    private TableView<ActionQR> actionTableQR;
 
     @FXML
-    private TableColumn<?, ?> colVal;
+    public TableColumn<ActionQR, String> colDate;
 
     @FXML
-    private TableColumn<?, ?> colDate;
+    public TableColumn<ActionQR, String> colWho;
 
     @FXML
-    private TableColumn<?, ?> colWho;
+    public TableColumn<ActionQR, String> colWhat;
 
     @FXML
-    private TableColumn<?, ?> colWhat;
-
-    @FXML
-    private TableView<?> actionTableQC;
+    private TableView<String> actionTableQC;
 
     @FXML
     private TableColumn<?, ?> colVal2;
@@ -143,6 +140,10 @@ public class Controller {
     private String[] severityValues = { "Peu importante", "Moyenne", "Importante", "Très importante"};
     private String[] nonDetectabilityValues = { "Avant réception", "Après réception" };
     
+    @FXML
+    void addAction(ActionEvent event) {
+    	actionTableQR.setItems(observableList);
+    }
     
     @FXML
     public void initialize() {
@@ -153,7 +154,16 @@ public class Controller {
         frequency.setItems(FXCollections.observableArrayList(frequencyValues));
         severity.setItems(FXCollections.observableArrayList(severityValues));
         nonDetectability.setItems(FXCollections.observableArrayList(nonDetectabilityValues));
-    }
+        
+        colDate.setCellValueFactory(new PropertyValueFactory<>("colDate"));
+    	colWho.setCellValueFactory(new PropertyValueFactory<>("colWho"));
+    	colWhat.setCellValueFactory(new PropertyValueFactory<>("colWhat"));
 
+    }
+    
+    private final ObservableList<ActionQR> observableList = FXCollections.observableArrayList(
+    		new ActionQR("test", "test", "test")
+    );
+    
 }
 

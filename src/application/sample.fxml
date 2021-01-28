@@ -203,7 +203,6 @@
                      </Label>
                      <TableView fx:id="actionTableQR" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
                         <columns>
-                           <TableColumn fx:id="colVal" maxWidth="36.0" minWidth="0.0" prefWidth="0.0" resizable="false" text="Done" />
                            <TableColumn fx:id="colDate" minWidth="-Infinity" prefWidth="68.0" text="Deadline" />
                            <TableColumn fx:id="colWho" minWidth="-Infinity" prefWidth="114.0" text="Owner" />
                            <TableColumn fx:id="colWhat" minWidth="-Infinity" prefWidth="337.0" text="Details" />
@@ -237,7 +236,7 @@
                               </styleClass>
                            </Button>
                            <Pane HBox.hgrow="ALWAYS" />
-                           <Button fx:id="addActionBtn" mnemonicParsing="false" text="Ajouter action">
+                           <Button fx:id="addActionBtn" mnemonicParsing="false" onAction="#addAction" text="Ajouter action">
                               <styleClass>
                                  <String fx:value="btn-alco" />
                                  <String fx:value="btn-large" />

@@ -223,7 +223,6 @@
                      </Label>
                      <TableView fx:id="actionTableQC" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="400.0" VBox.vgrow="ALWAYS">
                         <columns>
-                           <TableColumn fx:id="colVal2" maxWidth="63.0" minWidth="0.0" prefWidth="0.0" resizable="false" text="Done" />
                            <TableColumn fx:id="colDate2" minWidth="-Infinity" prefWidth="68.0" text="Deadline" />
                            <TableColumn fx:id="colWho2" minWidth="-Infinity" prefWidth="114.0" text="Owner" />
                            <TableColumn fx:id="colWhat2" minWidth="-Infinity" prefWidth="337.0" text="Details" />
@@ -236,7 +235,7 @@
                         <children>
                            <Pane HBox.hgrow="ALWAYS">
                               <children>
-                                 <Button fx:id="valActionBtn" layoutX="103.0" layoutY="14.0" mnemonicParsing="false" text="Action long terme">
+                                 <Button fx:id="valActionBtn" layoutX="103.0" layoutY="14.0" mnemonicParsing="false" onAction="#addActionQC" text="Action long terme">
                                     <styleClass>
                                        <String fx:value="btn-alco" />
                                        <String fx:value="btn-large" />

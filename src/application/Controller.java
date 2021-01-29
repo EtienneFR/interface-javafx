@@ -8,6 +8,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
@@ -18,7 +19,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.stage.Window;
 
 public class Controller {
@@ -75,19 +80,16 @@ public class Controller {
     public TableColumn<ActionQR, String> colWhat;
 
     @FXML
-    private TableView<String> actionTableQC;
+    private TableView<ActionQC> actionTableQC;
 
     @FXML
-    private TableColumn<?, ?> colVal2;
+    private TableColumn<ActionQC, String> colDate2;
 
     @FXML
-    private TableColumn<?, ?> colDate2;
+    private TableColumn<ActionQC, String> colWho2;
 
     @FXML
-    private TableColumn<?, ?> colWho2;
-
-    @FXML
-    private TableColumn<?, ?> colWhat2;
+    private TableColumn<ActionQC, String> colWhat2;
 
     @FXML
     private Button valActionBtn;
@@ -125,6 +127,10 @@ public class Controller {
         colDate.setCellValueFactory(new PropertyValueFactory<>("colDate"));
     	colWho.setCellValueFactory(new PropertyValueFactory<>("colWho"));
     	colWhat.setCellValueFactory(new PropertyValueFactory<>("colWhat"));
+    	
+    	colDate2.setCellValueFactory(new PropertyValueFactory<>("colDate2"));
+    	colWho2.setCellValueFactory(new PropertyValueFactory<>("colWho2"));
+    	colWhat2.setCellValueFactory(new PropertyValueFactory<>("colWhat2"));
 
     }
     
@@ -165,6 +171,17 @@ public class Controller {
     	if(date.getValue() != null && !comment.getText().isEmpty()) {
     		actionTableQR.getItems().add(
     				new ActionQR(date.getValue().format(formatter), "Moi", comment.getText())
+    		);
+    	}
+    }
+    
+    @FXML
+    void addActionQC(ActionEvent event) {
+    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
+    	
+    	if(date.getValue() != null && !comment.getText().isEmpty()) {
+    		actionTableQC.getItems().add(
+    				new ActionQC(date.getValue().format(formatter), "Moi", comment.getText())
     		);
     	}
     }

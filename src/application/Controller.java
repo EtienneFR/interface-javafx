@@ -8,6 +8,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.HPos;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
@@ -19,7 +21,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
@@ -172,6 +177,23 @@ public class Controller {
     		actionTableQR.getItems().add(
     				new ActionQR(date.getValue().format(formatter), "Moi", comment.getText())
     		);
+    	} else {
+    		final Stage dialog = new Stage();
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            GridPane gp = new GridPane();
+			gp.setAlignment(Pos.CENTER);
+			gp.setVgap(5.0);
+			gp.setHgap(5.0);
+ 			Text info = new Text("Les champs date et/ou description sont manquants");
+ 			info.setFill(Color.RED);
+ 			info.setFont(Font.font("Verdana", FontWeight.BOLD, 12));		
+ 			GridPane.setHalignment(info, HPos.CENTER);
+ 			gp.addRow(1, info);
+            Scene dialogScene = new Scene(gp, 400, 40);
+            dialog.setTitle("Informations Action Rapide");
+            dialog.setScene(dialogScene);
+            dialog.show();
+        
     	}
     }
     
@@ -183,6 +205,22 @@ public class Controller {
     		actionTableQC.getItems().add(
     				new ActionQC(date.getValue().format(formatter), "Moi", comment.getText())
     		);
+    	} else {
+    		final Stage dialog = new Stage();
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            GridPane gp = new GridPane();
+			gp.setAlignment(Pos.CENTER);
+			gp.setVgap(5.0);
+			gp.setHgap(5.0);
+ 			Text info = new Text("Les champs date et/ou description sont manquants");
+ 			info.setFill(Color.RED);
+ 			info.setFont(Font.font("Verdana", FontWeight.BOLD, 12));		
+ 			GridPane.setHalignment(info, HPos.CENTER);
+ 			gp.addRow(1, info);
+            Scene dialogScene = new Scene(gp, 400, 40);
+            dialog.setTitle("Informations Action Long Terme");
+            dialog.setScene(dialogScene);
+            dialog.show();
     	}
     }
     

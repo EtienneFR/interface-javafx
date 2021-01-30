@@ -107,9 +107,6 @@ public class Controller {
 
     @FXML
     private Button btnExit;
-
-    @FXML
-    private Label errorLabel;
     
     private String[] typologyValues = { "Type 1", "Type 2", "Type 3" };
     private String[] subTypeValues = { "A1", "A2", "A3" }; 

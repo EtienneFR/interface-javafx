@@ -277,8 +277,10 @@
 	                  <String fx:value="btn-alco" />
 	                  <String fx:value="btn-large" />
 	               </styleClass>
+                  <HBox.margin>
+                     <Insets right="5.0" />
+                  </HBox.margin>
 				</Button>
-               <Label fx:id="errorLabel" prefHeight="17.0" prefWidth="216.0" />
             </children>
             <GridPane.margin>
                <Insets top="5.0" />
